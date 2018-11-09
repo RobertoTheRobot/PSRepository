@@ -11,7 +11,9 @@ Function Out-HashList {
     System.Data.HashTable 
     .EXAMPLE 
     $hl = Get-ADUser -filter {Enabled -eq $true} -properties department | Out-HashList -key department -value samaccountname
-    This example creates a HashTable which keys are department and value a list of samaccountname     
+    This example creates a HashTable which keys are department and value a list of samaccountname  
+    .LINK 
+    https://github.com/RobertoTheRobot
     #> 
     param(
      [Parameter(Position=0, Mandatory=$true, ValueFromPipeline = $true)] [PSObject[]]$collection

@@ -11,7 +11,9 @@ Function Out-HashTable {
     System.Data.HashTable 
     .EXAMPLE 
     $ht = Get-psdrive | Out-HashTable -key Name -value Root
-    This example creates a HashTable which keys are the name of the drive and value the root.     
+    This example creates a HashTable which keys are the name of the drive and value the root. 
+    .LINK 
+    https://github.com/RobertoTheRobot    
     #>
     param(
      [Parameter(Position=0, Mandatory=$true, ValueFromPipeline = $true)] [PSObject[]]$collection
