@@ -1,3 +1,0 @@
-Function Private-Function {
-  $null;
-}
