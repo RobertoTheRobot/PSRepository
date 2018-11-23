@@ -4,7 +4,7 @@ function Convert-IpToHexArray {
     $ipArray = $ip.ToCharArray()
     $hexArr=@()
 
-    $ipArray | % { $hexArr += "0x" + [Convert]::ToString([byte][char]$_,16) }
+    $ipArray | ForEach-Object { $hexArr += "0x" + [Convert]::ToString([byte][char]$_,16) }
 
     $hexArr
 }
