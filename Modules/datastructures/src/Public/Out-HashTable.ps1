@@ -16,9 +16,9 @@ Function Out-HashTable {
     https://github.com/RobertoTheRobot    
     #>
     param(
-     [Parameter(Position=0, Mandatory=$true, ValueFromPipeline = $true)] [PSObject[]]$collection
-    ,[Parameter(Position=1, Mandatory=$true, ValueFromPipeline = $false)][string]$key
-    ,[Parameter(Position=2, Mandatory=$true, ValueFromPipeline = $false)][string]$value
+         [Parameter(Position=0, Mandatory=$true, ValueFromPipeline = $true)] [PSObject[]]$collection
+        ,[Parameter(Position=1, Mandatory=$true, ValueFromPipeline = $false)][string]$key
+        ,[Parameter(Position=2, Mandatory=$false, ValueFromPipeline = $false)][string]$value
     )
 
     Begin
@@ -27,9 +27,10 @@ Function Out-HashTable {
     }
     Process
     {
-        foreach($item in $collection)
-        {
+        if($value) {
             $hashTable[$item.($key)] = $item.($value)
+        } else {
+            $hashTable[$item.($key)] = $item
         }
     }
     End

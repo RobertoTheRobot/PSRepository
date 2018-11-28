@@ -16,9 +16,9 @@ Function Out-HashList {
     https://github.com/RobertoTheRobot
     #> 
     param(
-     [Parameter(Position=0, Mandatory=$true, ValueFromPipeline = $true)] [PSObject[]]$collection
-    ,[Parameter(Position=1, Mandatory=$true, ValueFromPipeline = $false)][string]$key
-    ,[Parameter(Position=2, Mandatory=$true, ValueFromPipeline = $false)][string]$value
+        [Parameter(Position=0, Mandatory=$true, ValueFromPipeline = $true)] [PSObject[]]$collection
+        ,[Parameter(Position=1, Mandatory=$true, ValueFromPipeline = $false)][string]$key
+        ,[Parameter(Position=2, Mandatory=$false, ValueFromPipeline = $false)][string]$value
     )
 
     Begin
@@ -32,8 +32,12 @@ Function Out-HashList {
             if(!$hashTable[$item.($key)])
             {
                 $hashTable[$item.($key)] = New-Object System.Collections.ArrayList
+            } 
+            if($value) {
+                [void]$hashTable[$item.($key)].Add($item.($value))
+            } else {
+                [void]$hashTable[$item.($key)].Add($item)
             }            
-            [void]$hashTable[$item.($key)].Add($item.($value))
         }
     }
     End
